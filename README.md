@@ -45,7 +45,7 @@ yum_globalconfig '/my/chroot/etc/yum.conf' do
 end
 ```
 
-#### Properties
+#### Standard Yum Properties
 
 `yum_globalconfig` can take most of the same parameters as a `yum_repository`, plus more, too numerous to describe here. Below are a few of the more commonly used ones. For a complete list, please consult the `yum.conf` man page, found here: <http://linux.die.net/man/5/yum.conf>
 
@@ -57,6 +57,18 @@ end
 - `logfile` - Full directory and file name for where yum should write its log file.
 - `exactarch` - Either `true` or `false`. Set to `true` to make 'yum update' only update the architectures of packages that you have installed. ie: with this enabled yum will not install an i686 package to update an x86_64 package. Default is `true`
 - `gpgcheck` - Either `true` or `false`. This tells yum whether or not it should perform a GPG signature check on the packages gotten from this repository.
+
+#### Yum v4 DNF Properties
+
+In RHEL 8, software installation is enabled by the new version of the Yum tool
+(Yum v4), which is based on the DNF technology. Yum v4 is compatible with Yum
+v3 used in RHEL 7, and supports all of the above properties. In addition, this
+cookbook currently supports the following property that is specific to Yum v4. 
+
+- `install_weak_deps` - (DNF only) When this option is set to true and a new
+  package is about to be installed, all packages linked by a weak dependency
+  relation (i.e., Recommends or Supplements flags) with this packgage will be
+  pulled into the transaction. Default is DNF's default of true.
 
 ### yum_repository
 
