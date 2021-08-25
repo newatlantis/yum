@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'yum_test::test_dnf' do
-  platform 'redhat', '8'
+describe 'yum_test::test_globalconfig_dnf_default' do
+  platform 'redhat', '8' # Uses DNF
 
   let(:test_dnf_run) do
     ChefSpec::SoloRunner.new(

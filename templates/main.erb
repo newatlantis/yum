@@ -125,8 +125,12 @@ installonlypkgs=<%= @config.installonlypkgs %>
 <% if @config.installroot %>
 installroot=<%= @config.installroot %>
 <% end %>
-<% if @config.install_weak_deps %>
-install_weak_deps=<%= @config.install_weak_deps %>
+<% if use_dnf %>
+  <% if @config.install_weak_deps %>
+install_weak_deps=1
+  <% else %>
+install_weak_deps=0
+  <% end %>
 <% end %>
 <% if @config.keepalive %>
 keepalive=<%= @config.keepalive %>
